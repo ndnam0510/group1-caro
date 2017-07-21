@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+main()
+{
+    DisplayBoard();
+    //inputX;
+    //inputY;
+    return 0;
+}
+
+void DisplayBoard(){
+    int length, lmax=20, //SIZE
+        width,  wmax=40;
+
+    char upleft=   218,    row=196,    up=   194, //ASCII Code
+         upright=  191,    col=179,    down= 193,
+         downleft= 192,    mid=197,    left= 195,
+         downright=217,                right=180;
+
+    printf(" ***********************************GOMOKU************************************\n\n");
+    printf(" Using (x,y) coordinate in input.\n\n");
+
+    for(width=1; width<=wmax; width++) {
+
+        for(length=1; width==1; length++) { //first line
+            if (length==1) {                       printf(" %c%c",upleft,row);}
+            if ((length>1)&&(length<lmax)) {       printf("%c%c%c%c",row,row,up,row);}
+            if (length==lmax) {                    printf("%c%c%c\n",row,row,upright);width++;}
+            }
+
+        for(length=1;(width>1)&&(width<wmax);length++){
+
+            for(length=1; width%2==0; length++){ //full box
+                if (length==1) {                  printf(" %c",col);}
+                if((length>1)&&(length<lmax)) {   printf("   %c",col);}
+                if (length==lmax){                printf("   %c\n",col);width++;}
+            }
+
+            for(length=1; width%2==1; length++){ //empty box
+                if (length==1) {                  printf(" %c%c",left,row);}
+                if((length>1)&&(length<lmax)) {   printf("%c%c%c%c",row,row,mid,row);}
+                if (length==lmax) {               printf("%c%c%c\n",row,row,right);width++;}
+            }
+        }
+
+        for(length=1; width==wmax; length++) { //last line
+            if (length==1) {                      printf(" %c%c",downleft,row);}
+            if((length>1)&&(length<lmax)) {       printf("%c%c%c%c",row,row,down,row);}
+            if (length==lmax) {                   printf("%c%c%c\n",row,row,downright);width++;}
+            }
+        }
+}
+void DisplayXaxis(void){
+    int numX;
+    printf("   ");
+    for (numX=1;numX<=10;numX++) printf("%d   ",numX);
+    if (numX=10) printf("   x\n");
+}
+void DisplayYaxis(void){
+    int numY;
+    for (numY=1;numY<=10;numY++){
+        printf("\n");
+        printf("%d\n",numY);
+        if (numY==10) printf("\ny");
+    }
+}
+
+void InputO(InputX){
+    int X,Y;
+
+    printf("\nX = ");
+    scanf("%d",X);
+    printf("Y = ");
+    scanf("%d",Y);
+
+    return InputX;
+}
+void InputX(InputO){
+     int X,Y;
+
+    printf("\nX = ");
+    scanf("%d",X);
+    printf("Y = ");
+    scanf("%d",Y);
+
+    return InputO;
+}
+void turn(inputX, inputY);
+
+void WinCondition();
+
